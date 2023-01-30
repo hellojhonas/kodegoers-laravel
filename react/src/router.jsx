@@ -8,6 +8,11 @@ import GuestLayout from "./components/GuestLayout";
 import Dashboard from "./views/Dashboard";
 import { Navigate } from "react-router-dom";
 import UserForm from "./views/UserForm";
+import Exercises from "./views/Exercises";
+import Attendance from "./views/Attendance";
+import Notes from "./views/Notes";
+import Files from "./views/Files";
+import Settings from "./views/Settings";
 
 const router = createBrowserRouter ([
     {
@@ -16,11 +21,31 @@ const router = createBrowserRouter ([
         children: [
             {
                 path: '/',
-                element: <Navigate to="/users"/>
+                element: <Navigate to="/dashboard"/>
             },
             {
                 path: '/dashboard',
                 element: <Dashboard/>
+            },
+            {
+                path: '/exercises',
+                element: <Exercises/>
+            },
+            {
+                path: '/attendance',
+                element: <Attendance/>
+            },
+            {
+                path: '/notes',
+                element: <Notes/>
+            },
+            {
+                path: '/files',
+                element: <Files/>
+            },
+            {
+                path: '/settings',
+                element: <Settings/>
             },
             {
                 path: '/users',

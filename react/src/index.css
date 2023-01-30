@@ -5,6 +5,9 @@
 }
 html, body, #root, #defaultLayout, #guestLayout {
     min-height: 100vh;
+    background-image: url("./assets/display-background.png");
+    background-size: cover;
+
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -42,8 +45,8 @@ input:focus {
 .btn-delete {
     font-family: "Roboto", sans-serif;
     outline: 0;
-    background: #5b08a7;
-    border: 0;
+    /* background: #5b08a7; */
+    /* border: 0; */
     text-decoration: none;
     padding: 15px;
     color: #FFFFFF;
@@ -51,6 +54,11 @@ input:focus {
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
+    
+    background: #22A7F0;
+    border: 1px solid #B9AFBE;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
 }
 
 .btn-block {
@@ -85,7 +93,7 @@ input:focus {
 .btn:hover,
 .btn:active,
 .btn:focus {
-    background: #5b08a7;
+    background: #22A7F0;
 }
 
 .text-center {
@@ -145,16 +153,36 @@ table > tbody > tr > td {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: rgba(234, 234, 234, 0.9);
+}
+
+.login-signup-form2 {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-signup-form .form {
     width: 360px;
     position: relative;
     z-index: 1;
+    /* background: #FFFFFF; */
+    max-width: 360px;
+    padding: 34px;
+    /* box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1); */
+}
+.login-signup-form2 .form2 {
+    width: 360px;
+    z-index: 1;
     background: #FFFFFF;
     max-width: 360px;
     padding: 34px;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-signup-form .title {

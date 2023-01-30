@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import {createRef, useState, useRef} from "react";
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../context/ContextProvider.jsx";
+import '../css/guest.css'
+
 
 export default function Signup() {
     const nameRef = useRef();
@@ -35,10 +37,12 @@ export default function Signup() {
     }
 
     return (
-        <div className="login-signup-form animated fadeInDown">
-            <div className="form">
+      <div className="container">
+        <div className="login-signup-form2 animated fadeInDown">
+            <div className="form2 text-center">
+              <h1 className="title">Registration To KodeGoers</h1>
                 <form onSubmit={onSubmit}>
-                    <h1 className="title">Sign up for Free</h1>
+                    <h1>Sign up for Free</h1>
                     {errors &&
                         <div className="alert">
                             {Object.keys(errors).map(key => (
@@ -55,5 +59,7 @@ export default function Signup() {
                 </form>
             </div>
         </div>
+      </div>
+
     )
 }
