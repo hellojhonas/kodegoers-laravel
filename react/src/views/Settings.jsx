@@ -95,7 +95,7 @@ export default function UserForm() {
                         <input value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder="Email"/>
                         {/* <input type="password" onChange={ev => setUser({...user, password: ev.target.value})} placeholder="Password"/>
                         <input type="password" onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder="Password Confirmation"/> */}
-                        {/* <button className="btn">Save</button> */}
+                        <button className="btn">Save</button>
                     </form>
                     }
                     </div>
