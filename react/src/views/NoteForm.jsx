@@ -2,28 +2,32 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../context/ContextProvider.jsx";
+import '../css/notes.css';
 
-export default function UserForm() {
+export default function NoteForm() {
   const navigate = useNavigate();
   const {id} = useParams();
-  const [user, setUser] = useState({
+  const [note, setNote] = useState({
     id: null,
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: ''
-  })
-  const [errors, setErrors] = useState(null)
-  const [loading, setLoading] = useState(false)
-  const {setNotification} = useStateContext()
+    note_title: '',
+    note_content: '',
+    user_id:''
+  });
+  const [errors, setErrors] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const {user, setNotification} = useStateContext();
+
+  useEffect(() => {
+    setNote({...note, user_id: user.id})
+  },[user]);
 
   if (id) {
     useEffect(() => {
       setLoading(true)
-      axiosClient.get(`/users/${id}`)
+      axiosClient.get(`/notes/${id}`)
         .then(({data}) => {
           setLoading(false)
-          setUser(data)
+          setNote(data)
           console.log(data)
         })
         .catch(() => {
@@ -34,11 +38,11 @@ export default function UserForm() {
 
   const onSubmit = ev => {
     ev.preventDefault()
-    if (user.id) {
-      axiosClient.put(`/users/${user.id}`, user)
+    if (note.id) {
+      axiosClient.put(`/notes/${note.id}`, note)
         .then(() => {
-          setNotification('User was successfully updated')
-          navigate('/users')
+          setNotification('Note was successfully updated')
+          navigate('/notes')
         })
         .catch(err => {
           const response = err.response;
@@ -47,10 +51,10 @@ export default function UserForm() {
           }
         })
     } else {
-      axiosClient.post('/users', user)
+      axiosClient.post('/notes', note)
         .then(() => {
-          setNotification('User was successfully created')
-          navigate('/users')
+          setNotification('Note was successfully created')
+          navigate('/notes')
         })
         .catch(err => {
           const response = err.response;
@@ -63,8 +67,8 @@ export default function UserForm() {
 
   return (
     <>
-      {user.id && <h1>Update User: {user.name}</h1>}
-      {!user.id && <h1>New User</h1>}
+      {note.id && <h1>Update Note: {note.note_title}</h1>}
+      {!note.id && <h1>New Note</h1>}
       <div className="card animated fadeInDown">
         {loading && 
           <div className="text-center">
@@ -80,10 +84,8 @@ export default function UserForm() {
         }
         {!loading && 
           <form onSubmit={onSubmit}>
-            <input value={user.name} onChange={ev => setUser({...user, name: ev.target.value})} placeholder="Name"/>
-            <input value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder="Email"/>
-            <input type="password" onChange={ev => setUser({...user, password: ev.target.value})} placeholder="Password"/>
-            <input type="password" onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder="Password Confirmation"/>
+            <input value={note.note_title} onChange={ev => setNote({...note, note_title: ev.target.value})} placeholder="Title"/>
+            <textarea value={note.note_content} onChange={ev => setNote({...note, note_content: ev.target.value})} placeholder="Content"/>
             <button className="btn">Save</button>
           </form>
         }
