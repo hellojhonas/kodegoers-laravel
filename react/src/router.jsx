@@ -11,6 +11,7 @@ import UserForm from "./views/UserForm";
 import Exercises from "./views/Exercises";
 import Attendance from "./views/Attendance";
 import Notes from "./views/Notes";
+import NoteForm from "./views/NoteForm";
 import Files from "./views/Files";
 import Settings from "./views/Settings";
 
@@ -38,6 +39,14 @@ const router = createBrowserRouter ([
             {
                 path: '/notes',
                 element: <Notes/>
+            },
+            {
+                path: '/notes/new',
+                element: <NoteForm key="noteCreate"/>
+            },
+            {
+                path: '/notes/:id',
+                element: <NoteForm key="noteUpdate"/>
             },
             {
                 path: '/files',

@@ -1,4 +1,5 @@
 import { createContext, useState, useContext } from "react";
+import Swal from 'sweetalert2';
 
 const StateContext = createContext({
     currentUser: null,
@@ -25,11 +26,15 @@ export const ContextProvider = ({children}) => {
     }
 
     const setNotification = message => {
-        _setNotification(message);
-    
-        setTimeout(() => {
-          _setNotification('')
-        }, 5000)
+        Swal.fire({
+            text: message,
+            icon: 'success',
+            timer: 3000,
+            showConfirmButton: false,
+            onClose: () => {
+              // Perform any necessary actions after the notification has been closed
+            }
+          });
     }
 
     return (
