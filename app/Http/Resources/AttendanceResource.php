@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class AttendanceResource extends JsonResource
 {
     public static $wrap = false;
     /**
@@ -17,12 +17,10 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'email' => $this->email,
+            'attendance_status' => $this->attendance_status,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
-            'mailing_address' => $this->mailing_address,
-            'contact_number' => $this->contact_number,
-            'specialization' => $this->specialization
+            'attendance_title' => $this->attendance_title,
+            'attendance_content' => $this->attendance_content
         ];
     }
 }

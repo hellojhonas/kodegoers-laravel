@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class NotificationResource extends JsonResource
 {
     public static $wrap = false;
     /**
@@ -17,12 +17,9 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'email' => $this->email,
-            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
-            'mailing_address' => $this->mailing_address,
-            'contact_number' => $this->contact_number,
-            'specialization' => $this->specialization
+            'notification_title' => $this->notification_title,
+            'notification_content' => $this->notification_content,
+            'notification_date' => $this->notification_date
         ];
     }
 }

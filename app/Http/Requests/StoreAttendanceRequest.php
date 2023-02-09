@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
-class StoreUserRequest extends FormRequest
+class StoreAttendanceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,17 +25,10 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:55',
-            'email' => 'required|email|unique:users,email',
-            'mailing_address' => 'string',
-            'contact_number' => 'int',
-            'specialization' => 'string',
-            'password' => [
-                'required',
-                Password::min(8)
-                    ->letters()
-                    ->symbols(),
-            ]
+            'user_id' => 'int',
+            'attendance_status' => 'string',
+            'attendance_title' =>'string',
+            'attendance_content' => 'string'
         ];
     }
 }

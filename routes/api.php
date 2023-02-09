@@ -3,6 +3,11 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\NoteController;
+use App\Http\Controllers\Api\TopicController;
+use App\Http\Controllers\Api\TaskController;
+use App\Http\Controllers\Api\EventController;
+use App\Http\Controllers\Api\NotificationController;
+use App\Http\Controllers\Api\AttendanceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +29,11 @@ Route::middleware('auth:sanctum')->group(function() {
     });
     Route::apiResource('/users', UserController::class);
     Route::apiResource('/notes', NoteController::class);
+    Route::apiResource('/topics', TopicController::class);
+    Route::apiResource('/tasks', TaskController::class);
+    Route::apiResource('/events', EventController::class);
+    Route::apiResource('/notifications', NotificationController::class);
+    Route::apiResource('/attendances', AttendanceController::class);
 
 });
 
